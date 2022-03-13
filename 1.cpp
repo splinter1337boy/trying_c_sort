@@ -7,17 +7,56 @@
 #include "conio.h"
 
 
+void selection_sort(int* a, int N) {
+	int k;
+	int x;
+	for(int i = 0; i < N; i++) {
+		k = i;
+		x = a[i];
+		for(int j = i + 1; j < N; j++) {
+			if(a[j] < x) {
+				k = j;
+				x = a[j];
+			}
+		}
+
+		a[k] = a[i];
+		a[i] = x;
+	}
+}
+
+
 void insertion_sort(int* arr, int N) {
 	int x;
 	for(int i = 1; i < N; i++) {
 		x = arr[i];
 		int j = i - 1;
-		while(x < arr[j]) {
+		while(j >= 0 && x < arr[j]) {
 			arr[j + 1] = arr[j];
 			j--;
 		}
 		arr[j + 1] = x;
 	}
+
+}
+
+void bubble_sort(int* a, int N) {
+	for(int i = 0; i < N - 1; i++) {
+		bool changed = false;
+		for(int j = 0; j < N - i - 1; j++) {
+			if(a[j] > a[j + 1]) {
+				int b = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = b;
+				changed = true;
+			}
+		}
+		if(!changed) {
+			break;
+		}
+	}
+
+
 }
 
 void print(int* arr, int N) {
